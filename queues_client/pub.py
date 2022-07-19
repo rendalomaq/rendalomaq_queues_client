@@ -20,6 +20,7 @@ sqs = boto3.client(
 
 @dataclass
 class Mark:
+    imei: str
     server_time: str
     device_time: str
     longitude: float
