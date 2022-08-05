@@ -1,6 +1,6 @@
-from typing import Any
-from dataclasses import asdict, dataclass
 import datetime
+from dataclasses import asdict, dataclass
+from typing import Any
 
 
 @dataclass
@@ -32,6 +32,7 @@ def serialize_event(event: Event) -> dict[str, Any]:
 
 if __name__ == "__main__":
     from pprint import pprint
+
     pos = Position(
         raw_message="",
         device_id="",

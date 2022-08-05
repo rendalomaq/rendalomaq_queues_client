@@ -1,0 +1,64 @@
+exclude: "{{cookiecutter.project_slug}}"
+default_stages: [commit]
+
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v2.2.3
+    hooks:
+    -   id: check-ast
+        name: python check ast
+    -   id: trailing-whitespace
+        name: trim trailing whitespace
+        files: (.*\.py$|.*\.css$|.*\.js$|.*\.html$)
+        exclude: (^.*\/migrations\/.*\.py$|.*\/node_modules\/.*)
+    -   id: end-of-file-fixer
+        name: end of line fixer
+        files: (.*\.py$|.*\.css$|.*\.js$|.*\.html$)
+        exclude: (^.*\/migrations\/.*\.py$|.*\/node_modules\/.*)
+    -   id: check-merge-conflict
+        name: check merge conflicts
+    -   id: check-json
+        name: Check Kubernetes secrets format
+        files: (.*\.ejson$)
+        types: [file]
+  - repo: local
+    hooks:
+    -   id: print-checker
+        name: print checker
+        description: Check python files for print statements
+        entry: python scripts/print_checker.py
+        files: .*\.py$
+        exclude: ^scripts\/.*\.py$
+        language: python
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.0.1
+    hooks:
+      - id: trailing-whitespace
+      - id: check-yaml
+
+  - repo: https://github.com/psf/black
+    rev: 22.3.0
+    hooks:
+      - id: black
+
+  - repo: https://github.com/PyCQA/isort
+    rev: 5.10.1
+    hooks:
+      - id: isort
+        args: ["--profile", "black"]
+
+  - repo: https://github.com/Lucas-C/pre-commit-hooks-bandit
+    rev: v1.0.5
+    hooks:
+    -   id: python-bandit-vulnerability-check
+        args: [--verbose, --ini, .banditrc, -ll, --skip, "B321,B402", --recursive, domains/]
+
+  - repo: https://gitlab.com/pycqa/flake8
+    rev: 4.0.1
+    hooks:
+    - id: flake8
+
+ci:
+  autoupdate_schedule: weekly
+  skip: []
+  submodules: false
