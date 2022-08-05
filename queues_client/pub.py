@@ -5,7 +5,7 @@ import json
 
 import boto3
 
-from .entities import Event
+from .entities import Event, serialize_event
 
 SQS_GPS_EVENT_QUEUE_URL = os.environ.get(
     "SQS_GPS_EVENT_QUEUE_URL", 
@@ -38,5 +38,5 @@ def send_event(event : Event) -> str:
 
     return send_message(
         queue_url=SQS_GPS_EVENT_QUEUE_URL,
-        data=asdict(event),
+        data=serialize_event(event),
     )
