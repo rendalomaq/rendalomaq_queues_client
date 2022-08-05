@@ -13,6 +13,12 @@ message_id = send_event(
 
 ```python
 @dataclass
+class Event:
+    raw_message: str
+    device_id: str
+
+
+@dataclass
 class Position(Event):
     device_time: str
     longitude: float
