@@ -1,5 +1,17 @@
 # Usage
 
+## Installation
+
+git+https://github.com/rendalomaq/rendalomaq_queues_client#1
+
+## Environment variables required
+
+- SQS_GPS_EVENT_QUEUE_URL
+- AWS_REGION
+- AWS_SQS_URL
+- AWS_ACCESS_KEY
+- AWS_SECRET_ACCESS
+
 ```python
 from queues_client.entities import Position
 from queues_client.pub import send_event
