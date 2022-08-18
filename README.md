@@ -1,5 +1,3 @@
-# Usage
-
 ## Installation
 
 `pip install git+https://github.com/rendalomaq/rendalomaq_queues_client#1`
@@ -11,6 +9,8 @@
 - AWS_SQS_URL
 - AWS_ACCESS_KEY
 - AWS_SECRET_ACCESS
+
+## Usage
 
 ```python
 from queues_client.entities import Position
