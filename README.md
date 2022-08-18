@@ -2,7 +2,7 @@
 
 ## Installation
 
-git+https://github.com/rendalomaq/rendalomaq_queues_client#1
+`pip install git+https://github.com/rendalomaq/rendalomaq_queues_client#1`
 
 ## Environment variables required
 
